@@ -5,7 +5,7 @@ import {
   useTransform,
   useReducedMotion,
 } from 'motion/react'
-import { House, Buildings } from '@phosphor-icons/react'
+import { House, Buildings, ArrowUpRight } from '@phosphor-icons/react'
 import { useSegment } from '../segment.jsx'
 import { HERO } from '../data.js'
 import Gauge from './Gauge.jsx'
@@ -119,6 +119,9 @@ export default function Hero() {
             <Magnetic>
               <a href="#contacto" className="btn btn-primary">
                 Cotiza gratis
+                <span className="btn-orb" aria-hidden="true">
+                  <ArrowUpRight size={14} weight="bold" />
+                </span>
               </a>
             </Magnetic>
             <Magnetic strength={0.22}>

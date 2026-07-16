@@ -14,6 +14,12 @@
   margin-top: 2.6rem;
   border: 1px solid var(--line-strong);
   border-radius: var(--r-card);
+  /* double-bezel: placa dentro de bandeja */
+  box-shadow:
+    inset 0 1px 0 var(--edge-highlight),
+    0 0 0 7px color-mix(in srgb, var(--surface) 45%, transparent),
+    0 0 0 8px var(--line),
+    var(--shadow-soft);
   background:
     radial-gradient(ellipse 80% 90% at 50% 0%, var(--accent-dim), transparent 60%),
     var(--surface);

@@ -16,7 +16,8 @@
   background: var(--surface);
   padding: 1.6rem;
   overflow: hidden;
-  transition: transform 0.25s ease, border-color 0.25s ease;
+  transition: transform 0.45s var(--ease-premium), border-color 0.3s var(--ease-premium),
+    box-shadow 0.5s var(--ease-premium);
   --mx: 50%;
   --my: 50%;
 }
@@ -35,6 +36,7 @@
 .cell:hover {
   transform: translateY(-4px);
   border-color: var(--accent-line);
+  box-shadow: var(--shadow-soft);
 }
 
 .cell:hover::after {

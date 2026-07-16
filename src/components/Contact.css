@@ -46,6 +46,11 @@
   border: 1px solid var(--line-strong);
   border-radius: var(--r-card);
   background: var(--surface);
+  box-shadow:
+    inset 0 1px 0 var(--edge-highlight),
+    0 0 0 7px color-mix(in srgb, var(--surface) 45%, transparent),
+    0 0 0 8px var(--line),
+    var(--shadow-soft);
   padding: clamp(1.5rem, 3vw, 2.2rem);
   display: grid;
   gap: 1.2rem;

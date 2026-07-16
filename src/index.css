@@ -43,10 +43,15 @@
   --r-input: 10px;
   --r-pill: 999px;
 
-  /* Tipografía */
-  --font-display: 'Space Grotesk Variable', system-ui, sans-serif;
-  --font-body: 'Hanken Grotesk Variable', system-ui, sans-serif;
+  /* Tipografía: Bricolage (display con carácter) + Instrument (cuerpo neutro) */
+  --font-display: 'Bricolage Grotesque Variable', system-ui, sans-serif;
+  --font-body: 'Instrument Sans Variable', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+
+  /* Profundidad de nivel agencia */
+  --shadow-soft: 0 30px 60px -34px rgba(2, 8, 18, 0.6);
+  --edge-highlight: rgba(255, 255, 255, 0.055);
+  --ease-premium: cubic-bezier(0.32, 0.72, 0, 1);
 
   /* Capas (escala z documentada) */
   --z-nav: 50;
@@ -81,6 +86,9 @@
 
   --ok: #1d9e57;
   --ok-dim: rgba(29, 158, 87, 0.12);
+
+  --shadow-soft: 0 30px 60px -36px rgba(31, 59, 92, 0.35);
+  --edge-highlight: rgba(255, 255, 255, 0.85);
 }
 
 *,
@@ -136,10 +144,21 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  font-weight: 600;
-  line-height: 1.08;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
   text-wrap: balance;
+}
+
+/* grano físico sutil sobre toda la página (capa fija, sin repaints) */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 ::selection {
@@ -171,12 +190,17 @@ section {
 /* Kicker: usar máximo 3 veces en toda la página (Servicios, Cobertura, Planes) */
 .kicker {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.66rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--accent);
-  display: block;
-  margin-bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.32rem 0.85rem;
+  border: 1px solid var(--accent-line);
+  border-radius: var(--r-pill);
+  background: var(--accent-dim);
+  margin-bottom: 1.2rem;
 }
 
 .section-title {
@@ -204,11 +228,29 @@ section {
   font-size: 0.95rem;
   letter-spacing: 0.01em;
   white-space: nowrap;
-  transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+  transition: transform 0.45s var(--ease-premium), background 0.3s var(--ease-premium),
+    border-color 0.3s var(--ease-premium), color 0.3s var(--ease-premium),
+    box-shadow 0.45s var(--ease-premium);
 }
 
 .btn:active {
   transform: scale(0.97);
+}
+
+/* Botón-dentro-de-botón: el ícono vive en su propia cápsula */
+.btn-orb {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(4, 35, 58, 0.16);
+  margin-right: -0.6rem;
+  transition: transform 0.45s var(--ease-premium);
+}
+
+.btn:hover .btn-orb {
+  transform: translate(2px, -2px) scale(1.06);
 }
 
 .btn-primary {

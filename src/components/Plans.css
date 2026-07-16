@@ -17,12 +17,13 @@
   border-radius: var(--r-card);
   background: var(--surface);
   padding: 1.9rem 1.7rem;
-  /* el transform lo maneja motion (tilt 3D); aquí solo el borde */
-  transition: border-color 0.25s ease;
+  /* el transform lo maneja motion (tilt 3D); aquí borde y sombra */
+  transition: border-color 0.3s var(--ease-premium), box-shadow 0.5s var(--ease-premium);
 }
 
 .plan:hover {
   border-color: var(--accent-line);
+  box-shadow: var(--shadow-soft);
 }
 
 .plan--star {

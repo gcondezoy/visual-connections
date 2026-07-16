@@ -90,10 +90,10 @@ export default function Services() {
                     s.visual === 'imagen' ? 'cell--img' : '',
                   ].join(' ')}
                   onMouseMove={handleSpotlight}
-                  initial={reduce ? false : { opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={reduce ? false : { opacity: 0, y: 22, filter: 'blur(8px)' }}
+                  whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                   viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: i * 0.07, ease: EASE }}
+                  transition={{ duration: 0.65, delay: i * 0.07, ease: EASE }}
                 >
                   {s.visual === 'imagen' && (
                     <div className="cell-photo" aria-hidden="true">

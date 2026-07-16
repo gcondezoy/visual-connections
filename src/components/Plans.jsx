@@ -64,10 +64,10 @@ function PlanesHogar({ reduce }) {
         <TiltCard
           key={p.nombre}
           className={`plan ${p.destacado ? 'plan--star' : ''}`}
-          initial={reduce ? false : { opacity: 0, y: 26 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={reduce ? false : { opacity: 0, y: 26, filter: 'blur(8px)' }}
+          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.55, delay: i * 0.08, ease: EASE }}
+          transition={{ duration: 0.65, delay: i * 0.08, ease: EASE }}
         >
           {p.destacado && <span className="plan-flag">{p.etiqueta}</span>}
           <h3 className="plan-name">{p.nombre}</h3>

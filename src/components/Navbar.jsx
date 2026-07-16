@@ -63,7 +63,7 @@ export default function Navbar() {
 
   return (
     <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
-      <div className="container nav-inner">
+      <div className="nav-inner">
         <a href="#inicio" className="nav-brand" aria-label="Corporación Visual Connections, inicio">
           <span className="nav-markwrap">
             <span className="nav-ring" aria-hidden="true" />
