@@ -1,0 +1,138 @@
+.stest-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stest-inner .section-sub {
+  margin-inline: auto;
+}
+
+.stest-panel {
+  width: min(760px, 100%);
+  margin-top: 2.6rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-card);
+  background:
+    radial-gradient(ellipse 80% 90% at 50% 0%, var(--accent-dim), transparent 60%),
+    var(--surface);
+  padding: clamp(2rem, 5vw, 3.2rem);
+  display: grid;
+  place-items: center;
+  min-height: 260px;
+}
+
+.stest-idle,
+.stest-medidor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.stest-btn {
+  padding: 1rem 2.1rem;
+  font-size: 1.02rem;
+}
+
+.stest-nota {
+  font-size: 0.82rem;
+  color: var(--text-3);
+  max-width: 40ch;
+}
+
+/* ---------- medición ---------- */
+
+.stest-num {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-size: clamp(3.4rem, 9vw, 5.2rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--text);
+}
+
+.stest-unidad {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.stest-barra {
+  width: min(320px, 70vw);
+  height: 3px;
+  border-radius: 3px;
+  background: var(--line);
+  overflow: hidden;
+  position: relative;
+}
+
+.stest-barra-luz {
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  animation: stest-scan 1.1s ease-in-out infinite;
+}
+
+@keyframes stest-scan {
+  from {
+    transform: translateX(-110%);
+  }
+  to {
+    transform: translateX(280%);
+  }
+}
+
+.stest-fase {
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* ---------- resultado ---------- */
+
+.stest-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stest-ping {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--text-2);
+}
+
+.stest-ping svg {
+  color: var(--accent);
+}
+
+.stest-veredicto {
+  font-size: 1.05rem;
+  color: var(--text-2);
+  max-width: 42ch;
+  text-wrap: pretty;
+}
+
+.stest-veredicto strong {
+  color: var(--text);
+}
+
+.stest-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 0.4rem;
+}

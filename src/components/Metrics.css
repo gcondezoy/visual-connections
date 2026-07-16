@@ -1,0 +1,91 @@
+.metrics {
+  border-block: 1px solid var(--line);
+  background: var(--bg-raise);
+}
+
+.metrics-inner {
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+  padding-block: 2.2rem;
+}
+
+.metrics-partner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-right: clamp(2rem, 4vw, 3.5rem);
+  border-right: 1px solid var(--line);
+  flex: none;
+}
+
+.partner-label {
+  font-size: 0.8rem;
+  color: var(--text-3);
+}
+
+.partner-mark {
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--text);
+}
+
+.metrics-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1.2rem, 3vw, 2.5rem);
+  flex: 1;
+  align-items: start;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column-reverse; /* número arriba, texto abajo */
+  /* en column-reverse, flex-end es la parte superior:
+     así todos los números quedan alineados arriba aunque
+     las etiquetas ocupen 1 o 2 líneas */
+  justify-content: flex-end;
+  gap: 0.35rem;
+}
+
+.metric-value {
+  margin: 0;
+}
+
+.metric-num {
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.metric-label {
+  font-size: 0.85rem;
+  color: var(--text-2);
+  max-width: 18ch;
+}
+
+@media (max-width: 860px) {
+  .metrics-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.6rem;
+  }
+
+  .metrics-partner {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.7rem;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    padding: 0 0 1.2rem;
+    width: 100%;
+  }
+
+  .metrics-list {
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+  }
+}

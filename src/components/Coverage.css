@@ -1,0 +1,270 @@
+.coverage {
+  background: var(--bg-raise);
+  border-block: 1px solid var(--line);
+}
+
+.coverage-inner {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
+}
+
+/* ---------- verificador ---------- */
+
+.checker {
+  margin-top: 2.2rem;
+}
+
+.checker-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-2);
+  margin-bottom: 0.5rem;
+}
+
+.checker-row {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.checker-input {
+  flex: 1;
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-input);
+  padding: 0.85rem 1.1rem;
+  color: var(--text);
+  transition: border-color 0.2s ease;
+}
+
+.checker-input::placeholder {
+  color: var(--text-3);
+}
+
+.checker-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.checker-btn {
+  flex: none;
+}
+
+/* ---------- resultado ---------- */
+
+.checker-result {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  margin-top: 1.4rem;
+  padding: 1.2rem 1.3rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-card);
+  background: var(--surface);
+}
+
+.checker-result--ok {
+  border-color: rgba(70, 217, 126, 0.4);
+  background: linear-gradient(160deg, var(--ok-dim), var(--surface) 55%);
+}
+
+.result-icon {
+  color: var(--text-2);
+  flex: none;
+  margin-top: 0.15rem;
+}
+
+.result-icon--ok {
+  color: var(--ok);
+}
+
+.result-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.result-text {
+  color: var(--text-2);
+  font-size: 0.92rem;
+  margin-top: 0.25rem;
+  max-width: 42ch;
+}
+
+.result-cta {
+  margin-top: 0.9rem;
+  padding: 0.6rem 1.3rem;
+  font-size: 0.88rem;
+}
+
+/* ---------- panel de estado de red ---------- */
+
+.net-panel {
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-card);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.net-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.3rem;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--accent-dim), transparent);
+}
+
+.net-title {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+
+.net-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ok);
+}
+
+/* único indicador con estado semántico de la página */
+.net-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ok);
+  animation: net-pulse 2s ease-in-out infinite;
+}
+
+@keyframes net-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 var(--ok-dim);
+  }
+  50% {
+    box-shadow: 0 0 0 6px var(--ok-dim);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .net-dot {
+    animation: none;
+  }
+}
+
+.net-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0.6rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.15rem 0.5rem;
+}
+
+.net-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  text-align: left;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.net-row:hover {
+  background: var(--accent-dim);
+}
+
+.net-row--sel {
+  border-color: var(--accent-line);
+  background: var(--accent-dim);
+}
+
+.net-name {
+  font-size: 0.88rem;
+  color: var(--text-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.net-row--sel .net-name,
+.net-row:hover .net-name {
+  color: var(--text);
+}
+
+/* barras de señal */
+.net-bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  flex: none;
+}
+
+.net-bars i {
+  width: 3px;
+  border-radius: 1px;
+  background: var(--line-strong);
+}
+
+.net-bars i:nth-child(1) {
+  height: 5px;
+}
+
+.net-bars i:nth-child(2) {
+  height: 8px;
+}
+
+.net-bars i:nth-child(3) {
+  height: 11px;
+}
+
+.net-bars i:nth-child(4) {
+  height: 14px;
+}
+
+.net-bars .net-bar--on {
+  background: var(--accent);
+}
+
+.net-foot {
+  padding: 0.85rem 1.3rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* ---------- móvil ---------- */
+
+@media (max-width: 960px) {
+  .coverage-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .checker-row {
+    flex-direction: column;
+  }
+
+  .checker-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .net-grid {
+    grid-template-columns: 1fr;
+  }
+}

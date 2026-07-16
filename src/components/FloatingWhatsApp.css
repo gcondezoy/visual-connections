@@ -1,0 +1,39 @@
+.float-stack {
+  position: fixed;
+  right: 1.4rem;
+  bottom: 1.4rem;
+  z-index: var(--z-float);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.wa-float {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #06281a;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+}
+
+.to-top {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--text-2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.to-top:hover {
+  color: var(--accent-strong);
+  border-color: var(--accent-line);
+}

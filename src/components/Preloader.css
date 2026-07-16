@@ -1,0 +1,96 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-loader);
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 42%, var(--accent-dim), transparent 65%),
+    var(--bg);
+}
+
+.loader-core {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.loader-mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 96px;
+  height: 96px;
+}
+
+.loader-mark img {
+  height: 72px;
+  width: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ondas de señal */
+.loader-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent-line);
+  animation: loader-pulse 1.3s ease-out infinite;
+}
+
+.loader-ring--2 {
+  animation-delay: 0.45s;
+}
+
+@keyframes loader-pulse {
+  from {
+    transform: scale(0.7);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+.loader-name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--text);
+  padding-bottom: 2px;
+}
+
+.loader-name em {
+  color: var(--accent);
+}
+
+.loader-track {
+  width: 190px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.loader-fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+  transform-origin: left;
+}
+
+.loader-status {
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  transition: color 0.3s ease;
+}
+
+.loader-status--ok {
+  color: var(--accent);
+}

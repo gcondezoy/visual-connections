@@ -1,0 +1,85 @@
+.process .section-sub {
+  margin-bottom: 3rem;
+}
+
+.timeline {
+  position: relative;
+  max-width: 720px;
+}
+
+/* riel: línea vertical centrada en la columna de nodos */
+.timeline-rail {
+  position: absolute;
+  top: 24px;
+  bottom: 24px;
+  left: 23px;
+  width: 2px;
+  background: var(--line);
+  border-radius: 2px;
+}
+
+.timeline-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--accent), var(--accent-strong));
+  transform-origin: top;
+  border-radius: 2px;
+}
+
+.timeline-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  row-gap: 2.6rem;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  column-gap: clamp(1.2rem, 3vw, 2.2rem);
+  align-items: start;
+}
+
+.step-node {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--surface);
+  border: 1px solid var(--accent-line);
+  color: var(--accent);
+  position: relative;
+  z-index: 1;
+}
+
+.step-body {
+  padding-top: 0.3rem;
+}
+
+.step-title {
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+}
+
+.step-text {
+  color: var(--text-2);
+  font-size: 0.95rem;
+  max-width: 48ch;
+}
+
+@media (max-width: 640px) {
+  .timeline-rail {
+    left: 19px;
+  }
+
+  .step {
+    grid-template-columns: 40px 1fr;
+  }
+
+  .step-node {
+    width: 40px;
+    height: 40px;
+  }
+}

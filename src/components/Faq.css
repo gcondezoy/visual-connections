@@ -1,0 +1,85 @@
+.faq-inner {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+.faq-head {
+  position: sticky;
+  top: 100px;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq-item:first-child {
+  border-top: 1px solid var(--line);
+}
+
+.faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: left;
+  padding: 1.2rem 0.2rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.02rem;
+  color: var(--text);
+  transition: color 0.2s ease;
+}
+
+.faq-q:hover {
+  color: var(--accent-strong);
+}
+
+.faq-caret {
+  flex: none;
+  color: var(--accent);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-item--open .faq-caret {
+  transform: rotate(180deg);
+}
+
+/* Acordeón con grid-rows: alto animado sin JS */
+.faq-a-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-item--open .faq-a-wrap {
+  grid-template-rows: 1fr;
+}
+
+.faq-a-inner {
+  overflow: hidden;
+}
+
+.faq-a {
+  color: var(--text-2);
+  font-size: 0.95rem;
+  padding: 0 0.2rem 1.3rem;
+  max-width: 60ch;
+}
+
+@media (max-width: 860px) {
+  .faq-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-head {
+    position: static;
+  }
+}

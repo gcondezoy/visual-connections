@@ -1,0 +1,217 @@
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: var(--z-nav);
+  transition: background 0.25s ease, border-color 0.25s ease, backdrop-filter 0.25s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.nav--scrolled {
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom-color: var(--line);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  height: 68px;
+}
+
+.nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-right: auto;
+}
+
+.nav-markwrap {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.nav-mark {
+  height: 40px;
+  width: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* la antena emite sus ondas al pasar el cursor por la marca */
+.nav-ring {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent-line);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-brand:hover .nav-ring {
+  animation: nav-pulse 1.2s ease-out infinite;
+}
+
+.nav-brand:hover .nav-ring--2 {
+  animation-delay: 0.4s;
+}
+
+@keyframes nav-pulse {
+  from {
+    transform: scale(0.7);
+    opacity: 0.7;
+  }
+  to {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+.nav-lockup {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.nav-corp {
+  font-family: var(--font-display);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.nav-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-style: italic; /* el wordmark del logo es itálico */
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  white-space: nowrap;
+  padding-bottom: 1px; /* reserva para descendentes en itálica */
+}
+
+.nav-name em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.8rem;
+}
+
+.nav-link {
+  font-size: 0.92rem;
+  color: var(--text-2);
+  position: relative;
+  transition: color 0.18s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 1.5px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.22s ease;
+}
+
+.nav-link:hover {
+  color: var(--text);
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* sección activa (scrollspy) */
+.nav-link--on {
+  color: var(--text);
+}
+
+.nav-link--on::after {
+  transform: scaleX(1);
+}
+
+.nav-cta {
+  padding: 0.6rem 1.3rem;
+  font-size: 0.88rem;
+}
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin-left: -0.8rem;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  color: var(--text-2);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--accent-strong);
+  border-color: var(--accent-line);
+}
+
+.nav-burger {
+  display: none;
+  color: var(--text);
+  padding: 0.3rem;
+}
+
+.nav-drawer {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .nav-links,
+  .nav-cta {
+    display: none;
+  }
+
+  .nav-burger {
+    display: inline-flex;
+  }
+
+  .nav {
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .nav-drawer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.8rem 1.25rem 1.4rem;
+    border-bottom: 1px solid var(--line);
+    background: color-mix(in srgb, var(--bg) 96%, transparent);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .drawer-link {
+    padding: 0.75rem 0.4rem;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--text);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .drawer-cta {
+    margin-top: 0.9rem;
+  }
+}

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // aplica el tema guardado antes del primer paint (evita flash)
+      document.documentElement.dataset.theme = localStorage.getItem('vc-theme') || 'dark'
+    </script>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preload" as="image" href="/img/hero.webp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101a26" />
+    <title>Visual Connections | Internet de fibra óptica y redes empresariales en Lima</title>
+    <meta
+      name="description"
+      content="Partner autorizado de WIN. Fibra óptica simétrica para tu hogar y conectividad dedicada para tu empresa. Instalación en 24 a 48 horas y soporte real por WhatsApp."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Visual Connections | Fibra óptica y redes en Lima" />
+    <meta
+      property="og:description"
+      content="Internet simétrico sobre la red de WIN, redes empresariales y soporte que sí responde. Cotiza gratis por WhatsApp."
+    />
+    <meta property="og:locale" content="es_PE" />
+    <!-- TODO: al desplegar, cambiar por la URL absoluta del dominio (WhatsApp lo requiere) -->
+    <meta property="og:image" content="/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Corporación Visual Connections",
+        "description": "Partner autorizado de WIN. Internet de fibra óptica para hogares y conectividad dedicada para empresas en Lima.",
+        "telephone": "+51 999 999 999",
+        "email": "ventas@visualconnections.pe",
+        "areaServed": "Lima, Perú",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Lima",
+          "addressCountry": "PE"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
