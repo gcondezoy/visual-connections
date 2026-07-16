@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   motion,
   AnimatePresence,
@@ -14,9 +15,16 @@ import './Plans.css'
 const ICONS = { Gauge, ShieldCheck, TreeStructure, Headset }
 const EASE = [0.16, 1, 0.3, 1]
 
-/* Card con tilt 3D que sigue el cursor (se desactiva con movimiento reducido) */
+/* Card con tilt 3D que sigue el cursor.
+   Solo en dispositivos con hover real: en táctil el tap dejaría
+   la card inclinada porque mouseleave nunca dispara. */
 function TiltCard({ className, children, ...motionProps }) {
   const reduce = useReducedMotion()
+  const [fine] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches,
+  )
+  const inactivo = reduce || !fine
+
   const rx = useMotionValue(0)
   const ry = useMotionValue(0)
   const srx = useSpring(rx, { stiffness: 180, damping: 18 })
@@ -38,10 +46,10 @@ function TiltCard({ className, children, ...motionProps }) {
   return (
     <motion.article
       className={className}
-      onMouseMove={reduce ? undefined : move}
-      onMouseLeave={reduce ? undefined : leave}
-      style={reduce ? undefined : { rotateX: srx, rotateY: sry, transformPerspective: 900 }}
-      whileHover={reduce ? undefined : { y: -6 }}
+      onMouseMove={inactivo ? undefined : move}
+      onMouseLeave={inactivo ? undefined : leave}
+      style={inactivo ? undefined : { rotateX: srx, rotateY: sry, transformPerspective: 900 }}
+      whileHover={inactivo ? undefined : { y: -6 }}
       {...motionProps}
     >
       {children}

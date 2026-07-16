@@ -215,3 +215,29 @@
     margin-top: 0.9rem;
   }
 }
+
+/* teléfonos angostos: la marca y los controles no deben desbordar */
+@media (max-width: 420px) {
+  .nav-inner {
+    gap: 0.9rem;
+  }
+
+  .nav-mark {
+    height: 34px;
+  }
+
+  .nav-corp {
+    font-size: 0.5rem;
+    letter-spacing: 0.24em;
+  }
+
+  .nav-name {
+    font-size: 0.95rem;
+  }
+
+  .theme-toggle {
+    width: 34px;
+    height: 34px;
+    margin-left: 0;
+  }
+}

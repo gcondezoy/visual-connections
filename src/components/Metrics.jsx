@@ -10,9 +10,7 @@ import {
 import { METRICAS } from '../data.js'
 import './Metrics.css'
 
-function Counter({ valor, sufijo = '', decimales = 0 }) {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+function Counter({ activo, valor, sufijo = '', decimales = 0 }) {
   const reduce = useReducedMotion()
   const mv = useMotionValue(0)
   const text = useTransform(mv, (v) =>
@@ -23,17 +21,17 @@ function Counter({ valor, sufijo = '', decimales = 0 }) {
   )
 
   useEffect(() => {
-    if (!inView) return
+    if (!activo) return
     if (reduce) {
       mv.set(valor)
       return
     }
     const controls = animate(mv, valor, { duration: 1.4, ease: [0.22, 1, 0.36, 1] })
     return () => controls.stop()
-  }, [inView, valor, reduce, mv])
+  }, [activo, valor, reduce, mv])
 
   return (
-    <span ref={ref} className="metric-num mono">
+    <span className="metric-num mono">
       <motion.span>{text}</motion.span>
       {sufijo}
     </span>
@@ -41,6 +39,11 @@ function Counter({ valor, sufijo = '', decimales = 0 }) {
 }
 
 export default function Metrics() {
+  // Un solo observador para toda la franja: los 4 contadores
+  // arrancan juntos y no dependen de márgenes de viewport frágiles.
+  const listRef = useRef(null)
+  const activo = useInView(listRef, { once: true, amount: 0.3 })
+
   return (
     <section className="metrics" aria-label="Cifras de la empresa">
       <div className="container metrics-inner">
@@ -50,12 +53,12 @@ export default function Metrics() {
           <span className="partner-mark mono">WIN</span>
         </div>
 
-        <dl className="metrics-list">
+        <dl className="metrics-list" ref={listRef}>
           {METRICAS.map((m) => (
             <div key={m.texto} className="metric">
               <dt className="metric-label">{m.texto}</dt>
               <dd className="metric-value">
-                <Counter valor={m.valor} sufijo={m.sufijo} decimales={m.decimales} />
+                <Counter activo={activo} valor={m.valor} sufijo={m.sufijo} decimales={m.decimales} />
               </dd>
             </div>
           ))}
